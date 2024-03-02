@@ -3,26 +3,23 @@
 
 #include "shared.h"
 #define MAGIC_NUMBER 1337
-// u16 block_size;         // Размер одного блока
-//     u32 first_block;        // Номер первого блока
-//     u64 total_blocks;       // Размер ФС в блоках
-//     char name[10];          // Название ФС
-//     u64 free_blocks;        // Свободный объём хранилища в байтах
-//     u32 block_bitmap_size;  // Размер битовой карты св./з. блоков
-//     u32 inode_bitmap_size;  // Размер битовой карты св./з. inode
 
+/**
+ * @brief Structure representing a superblock of a file system.
+ */
 typedef struct superblock
 {
-    u16 block_size;         // Размер одного блока
-    u64 total_blocks;       // Размер ФС в блоках
-    u32 total_inodes;
-    char name[12];          // Название ФС
-    u32 first_block;        // Номер первого блока
-    u64 free_blocks;        // Свободный объём хранилища в байтах
-    u32 first_bitmap_block;  // Размер битовой карты св./з. блоков
-    u32 first_bitmap_inode;  // Размер битовой карты св./з. inode
-    u32 first_inode_block;
-    u32 magic_number;
+    u16 block_size;             /**< Size of one block */
+    u64 total_blocks;           /**< Total size of the file system in blocks */
+    u32 total_inodes;           /**< Total number of inodes */
+    char name[12];              /**< Name of the file system */
+    u32 first_block;            /**< Number of the first block */
+    u64 free_blocks;            /**< Free storage space in bytes */
+    u32 first_bitmap_block;     /**< Size of the bitmap for free/allocated blocks */
+    u32 first_bitmap_inode;     /**< Size of the bitmap for free/allocated inodes */
+    u32 first_inode_block;      /**< Number of the first inode block */
+    u32 magic_number;           /**< Magic number to identify the file system */
 } superblock_t;
+
 
 #endif 
